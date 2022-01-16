@@ -52,6 +52,9 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseover', word => {
+          console.log("mouseover", word);
+          console.log("enableTooltip", enableTooltip);
+          console.log("tooltipInstance", tooltipInstance);
           if (
             enableTooltip &&
             (!tooltipInstance || tooltipInstance.isDestroyed)
@@ -73,6 +76,9 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseout', word => {
+          console.log("mouseout", word);
+          console.log("enableTooltip", enableTooltip);
+          console.log("tooltipInstance", tooltipInstance);
           if (tooltipInstance && !tooltipInstance.state.isVisible) {
             tooltipInstance.destroy();
           }
