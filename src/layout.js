@@ -83,7 +83,7 @@ export function render({ callbacks, options, random, selection, words }) {
         })
         .attr('cursor', onWordClick ? 'pointer' : 'default')
         .attr('fill', getFill)
-        .attr('fill-opacity', 1)
+        //.attr('fill-opacity', 1)
         .attr('font-family', fontFamily)
         .attr('font-style', fontStyle)
         .attr('font-weight', fontWeight)
@@ -110,6 +110,7 @@ export function render({ callbacks, options, random, selection, words }) {
         .transition()
         .duration(transitionDuration)
         .attr('fill', getFill)
+        //.attr('fill-opacity', 1)
         .attr('font-family', fontFamily)
         .attr('font-size', getFontSize)
         .attr('transform', getTransform)
@@ -119,7 +120,6 @@ export function render({ callbacks, options, random, selection, words }) {
       exit
         .transition()
         .duration(transitionDuration)
-        .attr('fill-opacity', 0)
         .remove();
     },
   );
