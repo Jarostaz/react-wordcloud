@@ -1,12 +1,10 @@
-import 'd3-transition';
-
 import { descending } from 'd3-array';
 import d3Cloud from 'd3-cloud';
 import { event } from 'd3-selection';
+import 'd3-transition';
 import clonedeep from 'lodash.clonedeep';
 import seedrandom from 'seedrandom';
 import tippy from 'tippy.js';
-
 import optimizedD3Cloud from './optimized-d3-cloud';
 import {
   choose,
@@ -14,8 +12,10 @@ import {
   getFontSize,
   getText,
   getTransform,
-  rotate,
+  rotate
 } from './utils';
+
+
 
 export function render({ callbacks, options, random, selection, words }) {
   const {
@@ -83,6 +83,7 @@ export function render({ callbacks, options, random, selection, words }) {
         })
         .attr('cursor', onWordClick ? 'pointer' : 'default')
         .attr('fill', getFill)
+        .attr('fill-opacity', 1)
         .attr('font-family', fontFamily)
         .attr('font-style', fontStyle)
         .attr('font-weight', fontWeight)
