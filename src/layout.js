@@ -53,9 +53,6 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseover', word => {
-          console.log("mouseover", word.text);
-          console.log("enableTooltip", enableTooltip);
-          console.log("tooltipInstance", tooltipInstance);
           if (
             enableTooltip &&
             (!tooltipInstance || tooltipInstance.isDestroyed || currentWord != word)
@@ -78,9 +75,6 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseout', word => {
-          console.log("mouseout", word.text);
-          console.log("enableTooltip", enableTooltip);
-          console.log("tooltipInstance", tooltipInstance);
           if (tooltipInstance && !tooltipInstance.state.isVisible) {
             tooltipInstance.destroy();
           }
@@ -118,7 +112,6 @@ export function render({ callbacks, options, random, selection, words }) {
         .transition()
         .duration(transitionDuration)
         .attr('fill', getFill)
-        .attr('fill-opacity', 1)
         .attr('font-family', fontFamily)
         .attr('font-size', getFontSize)
         .attr('transform', getTransform)
@@ -141,8 +134,8 @@ export function layout({
   size,
   words,
 }) {
-  const MAX_LAYOUT_ATTEMPTS = 10;
-  const SHRINK_FACTOR = 0.95;
+  const MAX_LAYOUT_ATTEMPTS = 5;
+  const SHRINK_FACTOR = 0.90;
   const {
     deterministic,
     enableOptimizations,
