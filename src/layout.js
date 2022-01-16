@@ -41,6 +41,7 @@ export function render({ callbacks, options, random, selection, words }) {
 
   // Load words
   let tooltipInstance;
+  let currentWord;
   const vizWords = selection.selectAll('text').data(words);
   vizWords.join(
     enter => {
@@ -52,12 +53,12 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseover', word => {
-          console.log("mouseover", word);
+          console.log("mouseover", word.text);
           console.log("enableTooltip", enableTooltip);
           console.log("tooltipInstance", tooltipInstance);
           if (
             enableTooltip &&
-            (!tooltipInstance || tooltipInstance.isDestroyed)
+            (!tooltipInstance || tooltipInstance.isDestroyed || currentWord != word)
           ) {
             tooltipInstance = tippy(event.target, {
               animation: 'scale',
@@ -69,6 +70,7 @@ export function render({ callbacks, options, random, selection, words }) {
               },
               ...tooltipOptions,
             });
+            currentWord = word;
           }
 
           if (onWordMouseOver) {
@@ -76,7 +78,7 @@ export function render({ callbacks, options, random, selection, words }) {
           }
         })
         .on('mouseout', word => {
-          console.log("mouseout", word);
+          console.log("mouseout", word.text);
           console.log("enableTooltip", enableTooltip);
           console.log("tooltipInstance", tooltipInstance);
           if (tooltipInstance && !tooltipInstance.state.isVisible) {
